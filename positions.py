@@ -59,7 +59,7 @@ pos = st.radio("What position?", positions, index = positions.index("QB"))
 chosen_authors = st.multiselect(
     "Choose your authors", 
     options = authors, 
-    default = ["Dane Brugler", "Matthew Freedman", "Charlie Campbell", "Lance Zierlein", "Danny Kelly", "Benjamin Solak",
+    default = ["Dane Brugler", "Matthew Freedman", "Charlie Campbell", "Danny Kelly", "Benjamin Solak",
                "Rob Staton", "Daniel Jeremiah", "Jeff Risdon", "Walter Cherepinsky", "Trevor Sikkema",
                "Shane Hallam"])
 
