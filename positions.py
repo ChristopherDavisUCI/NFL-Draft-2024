@@ -45,7 +45,8 @@ def make_chart(pos, df):
                     labelOverlap=False, 
                     tickCount=200,
                     labelExpr="split(datum.value, '!')[0]",
-                    ticks=True
+                    #ticks=True,
+                    grid=True
                     ), 
                 sort=None),
         y=alt.Y("pick:Q", scale=alt.Scale(reverse=True)),
