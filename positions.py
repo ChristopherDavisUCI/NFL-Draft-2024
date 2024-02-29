@@ -10,6 +10,9 @@ st.title('2024 NFL Draft Positions')
 df = pd.read_csv("data/draft2024e.csv")
 df["date"] = pd.to_datetime(df["date"])
 
+# The following shouldn't be necessary unless a huge number of mocks are included.
+alt.data_transformers.enable('default', max_rows = 50000)
+
 def get_rank(df_mini, player):
     try:
         return list(df_mini["player"]).index(player)+1
@@ -35,7 +38,16 @@ def make_chart(pos, df):
         df_list.append(df_mini)
     df_rank = pd.concat(df_list, axis=0)
     return alt.Chart(df_rank).mark_line(point=True).encode(
-        x=alt.X("draft-id:N", axis=alt.Axis(labelLimit=200), sort=None),
+        x=alt.X("draft-id:N", 
+                axis=alt.Axis(
+                    labelAngle=-55, 
+                    labelLimit=200, 
+                    labelOverlap=False, 
+                    tickCount=200,
+                    labelExpr="split(datum.value, '!')[0]",
+                    ticks=True
+                    ), 
+                sort=None),
         y=alt.Y("pick:Q", scale=alt.Scale(reverse=True)),
         color=alt.Color(
             "player:N", 
@@ -47,7 +59,7 @@ def make_chart(pos, df):
         href = "url:N"
     ).properties(
         title=pos,
-        height=500
+        height=500,
     )
 
 # A few positions are missing
