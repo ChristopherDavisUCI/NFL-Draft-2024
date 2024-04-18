@@ -73,7 +73,7 @@ chosen_authors = st.multiselect(
     "Choose your authors", 
     options = authors, 
     default = ["Dane Brugler", "Matthew Freedman", "Charlie Campbell", "Danny Kelly", "Benjamin Solak",
-               "Rob Staton", "Daniel Jeremiah", "Jeff Risdon", "Walter Cherepinsky", "Trevor Sikkema",
+               "Rob Staton", "Daniel Jeremiah", "Peter Schrager", "Jeff Risdon", "Walter Cherepinsky", "Trevor Sikkema",
                "Shane Hallam"])
 
 st.altair_chart(make_chart(pos, df[df["author"].isin(chosen_authors)]))
